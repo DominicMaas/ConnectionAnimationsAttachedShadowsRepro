@@ -1,5 +1,6 @@
 ﻿using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
 
 namespace ConnectionAnimationsAttachedShadowsRepro
@@ -23,10 +24,19 @@ namespace ConnectionAnimationsAttachedShadowsRepro
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             Model = (MyModel)e.Parameter;
+
+            var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation("forwardAnimation");
+            if (animation != null)
+            {
+                animation.TryStart(ModelControl, new [] { ModelName });
+            }
         }
 
         private void GoBack(object sender, RoutedEventArgs e)
         {
+            var animation = ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("backAnimation", ModelControl);
+            animation.Configuration = new DirectConnectedAnimationConfiguration();
+
             Frame.GoBack();
         }
     }

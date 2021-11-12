@@ -6,19 +6,22 @@
     xmlns:local="using:ConnectionAnimationsAttachedShadowsRepro"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    NavigationCacheMode="Required"
     mc:Ignorable="d">
 
     <Grid>
         <GridView
+            x:Name="MainGridView"
             IsItemClickEnabled="True"
             ItemClick="ListView_ItemClick"
             ItemsSource="{x:Bind MyCollection}"
+            Loaded="MainGridView_Loaded"
             SelectionMode="None">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="local:MyModel">
                     <StackPanel Margin="14">
                         <TextBlock Text="{x:Bind Name}" />
-                        <local:MyUserControl AttachedModel="{x:Bind}" />
+                        <local:MyUserControl x:Name="ModelControl" AttachedModel="{x:Bind}" />
                     </StackPanel>
                 </DataTemplate>
             </GridView.ItemTemplate>

@@ -14,8 +14,9 @@
             VerticalAlignment="Center"
             Orientation="Horizontal">
 
-            <local:MyUserControl AttachedModel="{x:Bind Model, Mode=OneWay}" />
+            <local:MyUserControl x:Name="ModelControl" AttachedModel="{x:Bind Model, Mode=OneWay}" />
             <TextBlock
+                x:Name="ModelName"
                 Margin="100,0,0,0"
                 FontSize="100"
                 FontWeight="SemiBold"
