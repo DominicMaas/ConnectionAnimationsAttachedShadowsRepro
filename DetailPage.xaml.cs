@@ -28,7 +28,7 @@ namespace ConnectionAnimationsAttachedShadowsRepro
             var animation = ConnectedAnimationService.GetForCurrentView().GetAnimation("forwardAnimation");
             if (animation != null)
             {
-                animation.TryStart(ModelControl, new [] { ModelName });
+                animation.TryStart(ModelControl, new[] { ModelName });
             }
         }
 
